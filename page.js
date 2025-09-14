@@ -1866,17 +1866,17 @@ parcelRequire = (function (e, r, t, n) {
         var zepto = require("zepto").$;
 
         function change_slogan() {
-          const Http = new XMLHttpRequest();
+          const xhr = new XMLHttpRequest();
           const url = "https://v1.hitokoto.cn/?c=i&encode=json";
-          Http.open("GET", url, false);
-          Http.send();
-          if (Http.status != 200) {
-            console.error("一言获取错误：" + Http.status);
-            zepto("#slogan").html("一言获取错误：" + Http.status);
+          xhr.open("GET", url, false);
+          xhr.send();
+          if (xhr.status != 200) {
+            console.error("一言获取错误：" + xhr.status);
+            zepto("#slogan").html("一言获取错误：" + xhr.status);
             return;
           }
-          var json = JSON.parse(Http.responseText);
-          console.log("一言获取成功：" + Http.responseText);
+          var json = JSON.parse(xhr.responseText);
+          console.log("一言获取成功：" + xhr.responseText);
           if (!json.hitokoto) {
             console.error("一言获取错误：返回数据错误");
             zepto("#slogan").html("一言获取错误：返回数据错误");
